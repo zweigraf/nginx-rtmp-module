@@ -624,7 +624,7 @@ ngx_int_t
 ngx_rtmp_relay_pull(ngx_rtmp_session_t *s, ngx_str_t *name,
         ngx_rtmp_relay_target_t *target)
 {
-    ngx_log_error(NGX_LOG_INFO, s->connection->log, 0,
+    ngx_log_error(NGX_LOG_ERR, s->connection->log, 0,
             "relay: create pull name='%V' app='%V' playpath='%V' url='%V'",
             name, &target->app, &target->play_path, &target->url.url);
 
@@ -638,7 +638,7 @@ ngx_int_t
 ngx_rtmp_relay_push(ngx_rtmp_session_t *s, ngx_str_t *name,
         ngx_rtmp_relay_target_t *target)
 {
-    ngx_log_error(NGX_LOG_INFO, s->connection->log, 0,
+    ngx_log_error(NGX_LOG_ERR, s->connection->log, 0,
             "relay: create push name='%V' app='%V' playpath='%V' url='%V'",
             name, &target->app, &target->play_path, &target->url.url);
 
