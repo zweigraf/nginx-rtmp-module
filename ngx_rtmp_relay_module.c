@@ -416,7 +416,7 @@ ngx_rtmp_relay_create_connection(ngx_rtmp_conf_ctx_t *cctx, ngx_str_t* name,
             u_char *firstSemicolon;
             firstSemicolon = ngx_strlchr(first, last, ';');
             if (firstSemicolon != NULL && firstSemicolon != last) {
-                ngx_log_error(NGX_LOG_ERR, s->connection->log, 0,
+                ngx_log_error(NGX_LOG_ERR, racf->log, 0,
                 "relay: LR: Using semicolon flow");
                 /* deduce play_path */
                 
@@ -433,7 +433,7 @@ ngx_rtmp_relay_create_connection(ngx_rtmp_conf_ctx_t *cctx, ngx_str_t* name,
                     {
                         goto clear;
                     }
-                    ngx_log_error(NGX_LOG_ERR, s->connection->log, 0,
+                    ngx_log_error(NGX_LOG_ERR, racf->log, 0,
                     "relay: LR: deduced playPath '%V'", &rctx->play_path);
                 }
                 last = firstSemicolon - 2; // remove 2 from pointer last so that it is before the semicolon
@@ -444,7 +444,7 @@ ngx_rtmp_relay_create_connection(ngx_rtmp_conf_ctx_t *cctx, ngx_str_t* name,
                     if (ngx_rtmp_relay_copy_str(pool, &rctx->app, &v) != NGX_OK) {
                         goto clear;
                     }
-                    ngx_log_error(NGX_LOG_ERR, s->connection->log, 0,
+                    ngx_log_error(NGX_LOG_ERR, racf->log, 0,
                     "relay: LR: deduced app '%V'", &rctx->app);
                 }
                 
