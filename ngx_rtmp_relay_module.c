@@ -434,7 +434,7 @@ ngx_rtmp_relay_create_connection(ngx_rtmp_conf_ctx_t *cctx, ngx_str_t* name,
                 }
                 last = firstSemicolon - 2; // remove 2 from pointer last so that it is before the semicolon
                 
-                if (rctx->app.len == 0 && last != p) {
+                if (rctx->app.len == 0 && last != first) {
                     v.data = first;
                     v.len = last - first;
                     if (ngx_rtmp_relay_copy_str(pool, &rctx->app, &v) != NGX_OK) {
